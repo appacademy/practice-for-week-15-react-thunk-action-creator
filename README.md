@@ -15,6 +15,9 @@ bottom of this page.
 In a different terminal, `cd` into the __frontend__ directory of the starter.
 
 1. Run `npm install` in the __frontend__ directory.
+   * Note that the __package.json__ now defines a proxy of
+     `http://localhost:5000`. This will effectively forward any unrecognized
+     requests to the port (`5000`) on which your backend is listening.
 2. Run `npm start` in the __frontend__ directory to start the server.
 
 ## Installing thunk middleware
@@ -127,12 +130,18 @@ Check the logger result to make sure that `articleState.entries` has updated!
 ## `writeArticle`
 
 Now it's your turn! Write a `writeArticle` thunk action creator in the
-__frontend/src/store/articleReducer.js__ file that takes in a `payload`, makes a
-`POST` request to `/api/articles`, and, if the request is successful, calls
-`dispatch` on the return value of `addArticle` passing in the new article from
-the response.
+__frontend/src/store/articleReducer.js__ file that takes in a `payload` and
+makes a `POST` request to `/api/articles`. To do this, you should pass an object
+specifying the `method`, `headers`--this should point to another object where
+`'Content-Type'` is set to `'application/json'`--and `body` (properly
+`stringify`-ed) as the second argument to `fetch`.
 
-**Hint: Remember to use `.json()` to parse your data before dispatching.**
+If the request is successful, call `dispatch` on the return value of
+`addArticle` invoked with the new article from the response. The action
+creator should also `return` the newly-created article.
+
+**Hint: Remember to use `.json()` to parse your received data before
+dispatching.**
 
 To test your `writeArticle`, run the following commands in your browser console:
 
@@ -145,7 +154,7 @@ Once again, the logger results should confirm whether or not your article was
 created and added to the Redux state.
 
 In the next practice, you will learn how to `dispatch` these thunk action
-creators.
+creators from within your code.
 
 ## What you have learned
 

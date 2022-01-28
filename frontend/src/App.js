@@ -1,6 +1,5 @@
 import ArticleList from './components/ArticleList';
 import ArticleInput from './components/ArticleInput';
-
 import './App.css';
 
 function App() {
