@@ -3,7 +3,7 @@
 In this practice, you will write thunk action creators that you will use later
 with Redux.
 
-## Set up
+## Setup
 
 Clone the starter repo accessible from the `Download Project` button at the
 bottom of this page.
