@@ -117,7 +117,18 @@ Time to test! Since the app is not functioning at the moment, you will need to
 test your thunk action creator by putting it on the window. In your root
 __index.js__, change the `import` from `'./store/articleReducer'` to import
 everything from the file as `articleActions`. Then add `articleActions` to the
-window.
+window. It should look like this:
+
+```js
+// frontend/src/index.js
+
+import * as articleActions from './store/articleReducer';
+// ...
+if (process.env.NODE_ENV !== 'production') {
+  window.store = store;
+  window.articleActions = articleActions;
+}
+```
 
 In the DevTools console of your browser, run this command:
 
