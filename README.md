@@ -8,17 +8,22 @@ with Redux.
 Clone the starter repo accessible from the `Download Project` button at the
 bottom of this page.
 
-1. Run `npm install` in the __backend__ directory to install dependencies.
-2. Run `npm run db:setup` to set up the database.
-3. Run `npm start` to start the backend server.
+1. Install dependencies
+2. Create a __.env__ file based on the example with proper settings for your
+   local environment
+3. Run `npm install` in the __backend__ directory to install dependencies.
+4. Create a database user with the same name and password as found in your
+   __.env__ file with `CREATEDB` privileges
+5. Run `npm run db:setup` to set up the database.
+6. Run `npm start` to start the backend server.
 
 In a different terminal, `cd` into the __frontend__ directory of the starter.
 
 1. Run `npm install` in the __frontend__ directory.
+2. Run `npm start` in the __frontend__ directory to start the server.
    * Note that the __package.json__ now defines a proxy of
      `http://localhost:5000`. This will effectively forward any unrecognized
      requests to the port (`5000`) on which your backend is listening.
-2. Run `npm start` in the __frontend__ directory to start the server.
 
 ## Installing thunk middleware
 

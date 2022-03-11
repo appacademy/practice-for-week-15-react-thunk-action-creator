@@ -1,10 +1,25 @@
-const path = require('path');
+const { db } = require('./');
+
+const { username, password, database, host } = db;
 
 module.exports = {
   development: {
-    dialect: 'sqlite',
-    seederStorage: 'sequelize',
-    storage: path.resolve(__dirname, '..', 'db', 'database.sqlite'),
-    host: 'localhost',
+    username,
+    password,
+    database,
+    host,
+    dialect: 'postgres',
+    seederStorage: 'sequelize'
   },
+  production: {
+    use_env_variable: 'DATABASE_URL',
+    dialect: 'postgres',
+    seederStorage: 'sequelize',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
+  }
 };
